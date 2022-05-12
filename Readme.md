@@ -25,3 +25,6 @@
 - Click tray icon again to show
 
 * Only works in Windows Systems (7, 10) and Windows Servers 2012 and After (because it's based on windows Forms).
+
+# Screenshot
+![alt text](https://github.com/emerysteele/macrodeckwebview/blob/main/MacroDeckWebView_example.png?raw=true "Screenshot 1")
