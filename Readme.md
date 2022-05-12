@@ -21,7 +21,7 @@
 
 - When Running, an icon will appear in your system tray
 - Click icon to open a window with MacroDeck's web client
-  - By default, it will auto connect to ws://127.0.0.1:8191. If you are running MacroDeck on a different port or different computer, update the WSURL in `App.config` (or `MacroDeck WebView.exe.config` in the compiled project)
+  - By default, it will auto connect to `ws://127.0.0.1:8191`. If you are running MacroDeck on a different port or different computer, update the WSURL in `App.config` (or `MacroDeck WebView.exe.config` in the compiled project)
 - Clicking off of WebView window will automatically hide the window
 - Click tray icon again to show
 
