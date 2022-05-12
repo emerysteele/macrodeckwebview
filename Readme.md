@@ -1,5 +1,5 @@
 ﻿
-# MacroDeck WebView Tray Applet
+# WebView Tray Applet for MacroDeck
 
  - Small applet that pops up a window with MacroDeck's Web Client, for easy access to macros right from your system tray.
 
@@ -11,8 +11,8 @@
 
 # Installing (Pre-compiled)
 
-    - Click on Resources link to the right
-    - Download latest .zip file
+    - Click on Resources link on the right sidebar
+    - Download latest `MacroDeckWebView.zip` file
     - Extract to a location of your choice
     - Run `MacroDeck WebView.exe`
 
