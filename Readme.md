@@ -6,7 +6,8 @@
 # Installing (Self Compile)
 
     - Clone the Repository
-    - Compile it with Visual Studio
+    - Open .csproj in Visual Studio
+    - Build the Solution
     - Run the Project
 
 # Installing (Pre-compiled)
