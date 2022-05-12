@@ -1,7 +1,7 @@
 ﻿
-# WebView Tray Applet for MacroDeck
+# WebView Tray Applet for [MacroDeck](https://macrodeck.org)
 
- - Small applet that pops up a window with a WebView for MacroDeck's Web Client. Gives easy access to macros right from your system tray.
+ - Small applet that pops up a window with a WebView for MacroDeck's [Web Client](http://web.macrodeck.org). Gives easy access to macros right from your system tray.
 
 # Installing (Self Compile)
 
