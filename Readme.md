@@ -3,14 +3,14 @@
 
  - Small applet that pops up a window with a WebView for MacroDeck's [Web Client](http://web.macrodeck.org). Gives easy access to macros right from your system tray.
 
-# Installing (Self Compile)
+# Running (Self Compile)
 
     - Clone the Repository
     - Open .csproj in Visual Studio
     - Build the Solution
     - Run the Project
 
-# Installing (Pre-compiled)
+# Running (Pre-compiled)
 
     - Click on Resources link on the right sidebar
     - Download latest `MacroDeckWebView.zip` file
