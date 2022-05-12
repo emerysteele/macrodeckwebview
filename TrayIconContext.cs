@@ -123,6 +123,7 @@ namespace MacroDeckWebView
             }
             else
             {
+                _exampleForm.Show();
                 _exampleForm.Activate();
             }
         }

@@ -15,8 +15,9 @@ namespace MacroDeckWebView
 {
     public partial class MacroDeckWebViewForm : DarkForm
     {
-            public MacroDeckWebViewForm()
+        public MacroDeckWebViewForm()
         {
+            
             InitializeComponent();
             this.Icon = Icon.FromHandle(Resources.ICON.GetHicon());
             this.Text = Resources.FORM_TITLE;
@@ -35,7 +36,7 @@ namespace MacroDeckWebView
         private async void WebView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             string WSURL = ConfigurationManager.AppSettings["WSURL"];
-            string v1 = await webView21.CoreWebView2.ExecuteScriptAsync("document.getElementById('btn-fullscreen').style.visibility='hidden'; document.getElementById('btn-back').style.visibility='hidden'; connect('"+WSURL+"')");
+            string v1 = await webView21.CoreWebView2.ExecuteScriptAsync("document.getElementById('btn-fullscreen').style.visibility='hidden'; document.getElementById('btn-back').style.visibility='hidden'; connect('"+WSURL+ "'); var style = document.createElement('style'); style.innerHTML = ` body{ image-rendering: -webkit-optimize-contrast; } `; document.head.appendChild(style);");
         }
 
         private void ExamepleForm_Resize(object sender, EventArgs e)

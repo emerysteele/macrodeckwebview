@@ -35,8 +35,8 @@
             // webView21
             // 
             this.webView21.AllowExternalDrop = true;
-            this.webView21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.webView21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -48,16 +48,16 @@
             this.webView21.ZoomFactor = 0.5D;
             this.webView21.NavigationCompleted += new System.EventHandler<Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs>(this.WebView21_NavigationCompleted);
             // 
-            // ExamepleForm
+            // MacroDeckWebViewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(532, 440);
             this.ControlBox = false;
             this.Controls.Add(this.webView21);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ExamepleForm";
+            this.Name = "MacroDeckWebViewForm";
             this.Deactivate += new System.EventHandler(this.ExamepleForm_Deactivate);
             this.Resize += new System.EventHandler(this.ExamepleForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
