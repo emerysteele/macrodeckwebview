@@ -12,7 +12,7 @@
 
 # Running (Pre-compiled)
 
-    - Click on Resources link on the right sidebar
+    - Click on Releases link on the right sidebar >>
     - Download latest `MacroDeckWebView.zip` file
     - Extract to a location of your choice
     - Run `Macro Deck WebView.exe`
