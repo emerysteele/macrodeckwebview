@@ -82,6 +82,8 @@ namespace MacroDeckWebView
                     
                     if (_exampleForm.Visible == false)
                     {
+                        _exampleForm.Left = Cursor.Position.X - _exampleForm.Width;
+                        _exampleForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - _exampleForm.Height;
                         _exampleForm.Show();
                         _exampleForm.Activate();
                         _exampleForm.ShowInTaskbar = false;
@@ -120,11 +122,13 @@ namespace MacroDeckWebView
                 _exampleForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - _exampleForm.Height;
                 _exampleForm.Show();
                 _exampleForm.Activate();
+                _exampleForm.ShowInTaskbar = false;
             }
             else
             {
                 _exampleForm.Show();
                 _exampleForm.Activate();
+                _exampleForm.ShowInTaskbar = false;
             }
         }
 
