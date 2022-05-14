@@ -6,7 +6,7 @@
 # Running (Self Compile)
 
     - Clone the Repository
-    - Open .csproj in Visual Studio
+    - Open .sln in Visual Studio
     - Build the Solution
     - Run the Project
 
