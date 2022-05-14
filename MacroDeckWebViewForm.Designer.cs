@@ -1,4 +1,5 @@
-﻿namespace MacroDeckWebView
+﻿using System.Configuration;
+namespace MacroDeckWebView
 {
     partial class MacroDeckWebViewForm
     {
@@ -58,8 +59,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MacroDeckWebViewForm";
-            this.Deactivate += new System.EventHandler(this.ExamepleForm_Deactivate);
-            this.Resize += new System.EventHandler(this.ExamepleForm_Resize);
+            this.Deactivate += new System.EventHandler(this.MacroDeckWebViewForm_Deactivate);
+            this.Load += new System.EventHandler(this.MacroDeckWebViewForm_Load);
+            this.Resize += new System.EventHandler(this.MacroDeckWebViewForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.ResumeLayout(false);
 

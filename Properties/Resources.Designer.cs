@@ -19,7 +19,7 @@ namespace MacroDeckWebView.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -79,7 +79,7 @@ namespace MacroDeckWebView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MacroDeck WebView.
+        ///   Looks up a localized string similar to Macro Deck WebView.
         /// </summary>
         internal static string FORM_TITLE {
             get {
@@ -116,7 +116,7 @@ namespace MacroDeckWebView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open MacroDeck WebView.
+        ///   Looks up a localized string similar to Open Macro Deck WebView.
         /// </summary>
         internal static string NOTIFY_MENU_1 {
             get {
@@ -125,7 +125,7 @@ namespace MacroDeckWebView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MacroDeck WebView.
+        ///   Looks up a localized string similar to Macro Deck WebView.
         /// </summary>
         internal static string NOTIFY_TOOLTIP {
             get {
@@ -139,15 +139,6 @@ namespace MacroDeckWebView.Properties {
         internal static string REPOSITORY_URL {
             get {
                 return ResourceManager.GetString("REPOSITORY_URL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Cake is a Lie ....
-        /// </summary>
-        internal static string TEXTBOX {
-            get {
-                return ResourceManager.GetString("TEXTBOX", resourceCulture);
             }
         }
     }

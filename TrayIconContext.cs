@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MacroDeckWebView.Properties;
+using System.Configuration;
 
 namespace MacroDeckWebView
 {
@@ -115,9 +116,13 @@ namespace MacroDeckWebView
         {
             if (_exampleForm == null)
             {
+                Int32 windowwidth = int.Parse(ConfigurationManager.AppSettings["windowWidth"]);
+                Int32 windowheight = int.Parse(ConfigurationManager.AppSettings["windowHeight"]);
                 _exampleForm = new MacroDeckWebViewForm();
                 _exampleForm.Closed += logsForm_Closed; // avoid reshowing a disposed form
                 _exampleForm.StartPosition = FormStartPosition.Manual;
+                _exampleForm.Width = windowwidth;
+                _exampleForm.Height = windowheight;
                 _exampleForm.Left = Cursor.Position.X - _exampleForm.Width;
                 _exampleForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - _exampleForm.Height;
                 _exampleForm.Show();

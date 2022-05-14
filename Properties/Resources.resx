@@ -124,7 +124,7 @@
     <value>System Initiated</value>
   </data>
   <data name="FORM_TITLE" xml:space="preserve">
-    <value>MacroDeck WebView</value>
+    <value>Macro Deck WebView</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ICON" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -137,15 +137,12 @@
     <value>Exit</value>
   </data>
   <data name="NOTIFY_MENU_1" xml:space="preserve">
-    <value>Open MacroDeck WebView</value>
+    <value>Open Macro Deck WebView</value>
   </data>
   <data name="NOTIFY_TOOLTIP" xml:space="preserve">
-    <value>MacroDeck WebView</value>
+    <value>Macro Deck WebView</value>
   </data>
   <data name="REPOSITORY_URL" xml:space="preserve">
     <value>https://github.com/emerysteele/macrodeckwebview</value>
-  </data>
-  <data name="TEXTBOX" xml:space="preserve">
-    <value>The Cake is a Lie ...</value>
   </data>
 </root>
