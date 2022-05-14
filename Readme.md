@@ -1,7 +1,7 @@
 ﻿
-# WebView Tray Applet for [MacroDeck](https://macrodeck.org)
+# WebView Tray Applet for [Macro Deck](https://macrodeck.org)
 
- - Small applet that pops up a window with a WebView for MacroDeck's [Web Client](http://web.macrodeck.org). Gives easy access to macros right from your system tray.
+ - Small applet that pops up a window with a WebView for Macro Deck's [Web Client](http://web.macrodeck.org). Gives easy access to macros right from your system tray.
 
 # Running (Self Compile)
 
@@ -20,8 +20,8 @@
 # How to Use
 
 - When Running, an icon will appear in your system tray
-- Click icon to open a window with MacroDeck's web client
-  - By default, it will auto connect to `ws://127.0.0.1:8191`. If you are running MacroDeck on a different port or different computer, update the WSURL in `App.config` (or `Macro Deck WebView.exe.config` in the compiled project)
+- Click icon to open a window with Macro Deck's web client
+  - By default, it will auto connect to `ws://127.0.0.1:8191`. If you are running Macro Deck on a different port or different computer, update the WSURL in `App.config` (or `Macro Deck WebView.exe.config` in the compiled project)
 - Clicking off of WebView window will automatically hide the window
 - Click tray icon again to show
 - Resize window to your liking, app will store it's set size & use going forward
