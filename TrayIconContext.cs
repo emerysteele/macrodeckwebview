@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MacroDeckWebView.Properties;
-using System.Configuration;
+using Microsoft.Win32;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace MacroDeckWebView
 {
@@ -30,12 +33,14 @@ namespace MacroDeckWebView
             {
                 ContextMenuStrip = new ContextMenuStrip(),
                 Icon = Icon.FromHandle(Resources.ICON.GetHicon()),
-                Text = Resources.NOTIFY_TOOLTIP,
+                Text = Resources.NOTIFY_TOOLTIP + " v" + Resources.VERSION,
                 Visible = true
             };
             // Menus
             _notifyIcon.ContextMenuStrip.Items.Add(ToolStripMenuItemWithHandler(Resources.NOTIFY_MENU_1, showLogsItem_Click));
+            _notifyIcon.ContextMenuStrip.Items.Add(ToolStripMenuItemWithHandler(Resources.NOTIFY_MENU_3, editWebTrayConfig_Click));
             _notifyIcon.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            _notifyIcon.ContextMenuStrip.Items.Add(ToolStripMenuItemWithHandler(Resources.NOTIFY_MENU_2, openMacroDeck_Click));
             _notifyIcon.ContextMenuStrip.Items.Add(ToolStripMenuItemWithHandler(Resources.NOTIFY_EXIT_MENU, exitSystem_Click));
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
             _notifyIcon.DoubleClick += notifyIcon_DoubleClick;
@@ -74,24 +79,27 @@ namespace MacroDeckWebView
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (_exampleForm == null)
+                if (MacroDeckWebViewForm.TrayLockVar == false)
                 {
-                    ShowLogsForm();
-                }
-                else
-                {
-                    
-                    if (_exampleForm.Visible == false)
+                    if (_exampleForm == null)
                     {
-                        _exampleForm.Left = Cursor.Position.X - _exampleForm.Width;
-                        _exampleForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - _exampleForm.Height;
-                        _exampleForm.Show();
-                        _exampleForm.Activate();
-                        _exampleForm.ShowInTaskbar = false;
+                        ShowLogsForm();
                     }
-                    else if (_exampleForm.Visible == true)
+                    else
                     {
-                        _exampleForm.Hide();
+
+                        if (_exampleForm.Visible == false)
+                        {
+                            _exampleForm.Left = Screen.FromPoint(Cursor.Position).WorkingArea.Right - _exampleForm.Width;
+                            _exampleForm.Top = Screen.FromPoint(Cursor.Position).WorkingArea.Bottom - _exampleForm.Height;
+                            _exampleForm.Show();
+                            _exampleForm.Activate();
+                            _exampleForm.ShowInTaskbar = false;
+                        }
+                        else if (_exampleForm.Visible == true)
+                        {
+                            _exampleForm.Hide();
+                        }
                     }
                 }
                 
@@ -110,30 +118,105 @@ namespace MacroDeckWebView
             return item;
         }
 
+        internal static class CommandLinePathResolver
+        {
+            private const int MAX_PATH = 260;
+            private static Lazy<Dictionary<string, string>> appPaths = new Lazy<Dictionary<string, string>>(LoadAppPaths);
+            private static Lazy<string[]> executableExtensions = new Lazy<string[]>(LoadExecutableExtensions);
+
+            public static string TryGetFullPathForCommand(string command)
+            {
+                if (Path.HasExtension(command))
+                    return TryGetFullPathForFileName(command);
+
+                return TryGetFullPathByProbingExtensions(command);
+            }
+
+            private static string[] LoadExecutableExtensions() => Environment.GetEnvironmentVariable("PATHEXT").Split(';');
+
+            private static Dictionary<string, string> LoadAppPaths()
+            {
+                var appPaths = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+                var key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\App Paths");
+                foreach (var subkeyName in key.GetSubKeyNames())
+                {
+                    var subkey = key.OpenSubKey(subkeyName);
+                    appPaths.Add(subkeyName, subkey.GetValue(string.Empty)?.ToString());
+                }
+
+                return appPaths;
+            }
+
+            private static string TryGetFullPathByProbingExtensions(string command)
+            {
+                foreach (var extension in executableExtensions.Value)
+                {
+                    var result = TryGetFullPathForFileName(command + extension);
+                    if (result != null)
+                        return result;
+                }
+
+                return null;
+            }
+
+            private static string TryGetFullPathForFileName(string fileName) =>
+                TryGetFullPathFromPathEnvironmentVariable(fileName) ?? TryGetFullPathFromAppPaths(fileName);
+
+            private static string TryGetFullPathFromAppPaths(string fileName) =>
+                appPaths.Value.TryGetValue(fileName, out var path) ? path : null;
+
+            private static string TryGetFullPathFromPathEnvironmentVariable(string fileName)
+            {
+                if (fileName.Length >= MAX_PATH)
+                    throw new ArgumentException($"The executable name '{fileName}' must have less than {MAX_PATH} characters.", nameof(fileName));
+
+                var sb = new StringBuilder(fileName, MAX_PATH);
+                return PathFindOnPath(sb, null) ? sb.ToString() : null;
+            }
+
+            [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, SetLastError = false)]
+            private static extern bool PathFindOnPath([In, Out] StringBuilder pszFile, [In] string[] ppszOtherDirs);
+        }
+
+
         private void showLogsItem_Click(object sender, EventArgs e) { ShowLogsForm(); }
+
+        private void openMacroDeck_Click(object sender, EventArgs e) { Process proc = Process.Start("C:\\Program Files\\Macro Deck\\Macro Deck 2.exe"); }
+        private void editWebTrayConfig_Click(object sender, EventArgs e) {
+            var notepadPlusPlus_Path = CommandLinePathResolver.TryGetFullPathForCommand("notepad++.exe");
+            var notepad_Path = CommandLinePathResolver.TryGetFullPathForCommand("notepad.exe");
+
+            if (notepadPlusPlus_Path != null)
+            {
+                Process proc = Process.Start("notepad++.exe", "\"" + AppDomain.CurrentDomain.SetupInformation.ConfigurationFile + "\"");
+            }
+            else
+            {
+                Process proc = Process.Start("notepad.exe", "\"" + AppDomain.CurrentDomain.SetupInformation.ConfigurationFile + "\"");
+            }
+        }
 
         private void ShowLogsForm()
         {
             if (_exampleForm == null)
             {
-                Int32 windowwidth = int.Parse(ConfigurationManager.AppSettings["windowWidth"]);
-                Int32 windowheight = int.Parse(ConfigurationManager.AppSettings["windowHeight"]);
                 _exampleForm = new MacroDeckWebViewForm();
                 _exampleForm.Closed += logsForm_Closed; // avoid reshowing a disposed form
                 _exampleForm.StartPosition = FormStartPosition.Manual;
-                _exampleForm.Width = windowwidth;
-                _exampleForm.Height = windowheight;
-                _exampleForm.Left = Cursor.Position.X - _exampleForm.Width;
-                _exampleForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - _exampleForm.Height;
+                // _exampleForm.Left = Cursor.Position.X - _exampleForm.Width;
+                //_exampleForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - _exampleForm.Height;
+                _exampleForm.Left = Screen.FromPoint(Cursor.Position).WorkingArea.Right - _exampleForm.Width;
+                _exampleForm.Top = Screen.FromPoint(Cursor.Position).WorkingArea.Bottom - _exampleForm.Height;
                 _exampleForm.Show();
                 _exampleForm.Activate();
-                _exampleForm.ShowInTaskbar = false;
             }
             else
             {
+                _exampleForm.Left = Screen.FromPoint(Cursor.Position).WorkingArea.Right - _exampleForm.Width;
+                _exampleForm.Top = Screen.FromPoint(Cursor.Position).WorkingArea.Bottom - _exampleForm.Height;
                 _exampleForm.Show();
                 _exampleForm.Activate();
-                _exampleForm.ShowInTaskbar = false;
             }
         }
 
@@ -148,5 +231,6 @@ namespace MacroDeckWebView
             this.ExitThread();
         }
 
+        
     }
 }
