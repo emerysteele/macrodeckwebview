@@ -39,6 +39,7 @@ v1.2 - Updated for Macro Deck 1.13
     - Uses the new built-in web server of Macro Deck, as web.macrodeck.org will be deprecated.
     - Added config edit button to tray icon context menu for easy editing.
     - Minor tweaks.
+	- Updated icon.
 
 v1.1 - Minor code cleanup/fixes.
 
