@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BALLOON_TEXT" xml:space="preserve">
-    <value>blank</value>
+    <value>Macro Deck WebView</value>
   </data>
   <data name="BALLOON_TITLE" xml:space="preserve">
     <value>System Initiated</value>
@@ -137,12 +137,24 @@
     <value>Exit</value>
   </data>
   <data name="NOTIFY_MENU_1" xml:space="preserve">
-    <value>Open Macro Deck WebView</value>
+    <value>Open WebView Tray App</value>
+  </data>
+  <data name="NOTIFY_MENU_2" xml:space="preserve">
+    <value>Open Macro Deck</value>
+  </data>
+  <data name="NOTIFY_MENU_3" xml:space="preserve">
+    <value>Edit WebView Tray Config</value>
   </data>
   <data name="NOTIFY_TOOLTIP" xml:space="preserve">
     <value>Macro Deck WebView</value>
   </data>
   <data name="REPOSITORY_URL" xml:space="preserve">
     <value>https://github.com/emerysteele/macrodeckwebview</value>
+  </data>
+  <data name="TEXTBOX" xml:space="preserve">
+    <value>The Cake is a Lie ...</value>
+  </data>
+  <data name="VERSION" xml:space="preserve">
+    <value>1.2</value>
   </data>
 </root>

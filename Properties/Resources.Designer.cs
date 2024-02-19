@@ -61,7 +61,7 @@ namespace MacroDeckWebView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to blank.
+        ///   Looks up a localized string similar to Macro Deck WebView.
         /// </summary>
         internal static string BALLOON_TEXT {
             get {
@@ -116,11 +116,29 @@ namespace MacroDeckWebView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Macro Deck WebView.
+        ///   Looks up a localized string similar to Open WebView Tray App.
         /// </summary>
         internal static string NOTIFY_MENU_1 {
             get {
                 return ResourceManager.GetString("NOTIFY_MENU_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Macro Deck.
+        /// </summary>
+        internal static string NOTIFY_MENU_2 {
+            get {
+                return ResourceManager.GetString("NOTIFY_MENU_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit WebView Tray Config.
+        /// </summary>
+        internal static string NOTIFY_MENU_3 {
+            get {
+                return ResourceManager.GetString("NOTIFY_MENU_3", resourceCulture);
             }
         }
         
@@ -139,6 +157,24 @@ namespace MacroDeckWebView.Properties {
         internal static string REPOSITORY_URL {
             get {
                 return ResourceManager.GetString("REPOSITORY_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Cake is a Lie ....
+        /// </summary>
+        internal static string TEXTBOX {
+            get {
+                return ResourceManager.GetString("TEXTBOX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1.2.
+        /// </summary>
+        internal static string VERSION {
+            get {
+                return ResourceManager.GetString("VERSION", resourceCulture);
             }
         }
     }
