@@ -34,6 +34,11 @@ namespace MacroDeckWebView
 
         private async void WebView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
+            string disableButtonBorderBox = ConfigurationManager.AppSettings["disableButtonBorderBox"];
+            if (disableButtonBorderBox == "true")
+            {
+                string v1 = await webView21.CoreWebView2.ExecuteScriptAsync("const injectCSS = css => {let el = document.createElement('style'); el.type = 'text/css'; el.innerText = css; document.head.appendChild(el); return el; }; injectCSS('.button-widget-wrapper {border:none!important;}');");
+            }
             //string v1 = await webView21.CoreWebView2.ExecuteScriptAsync("document.getElementById('btn-fullscreen').style.visibility='hidden'; document.getElementById('btn-back').style.visibility='hidden'; document.getElementById('btn-dark').style.visibility='hidden';");
         }
 
