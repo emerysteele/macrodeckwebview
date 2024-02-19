@@ -34,6 +34,10 @@
 ![alt text](https://github.com/emerysteele/macrodeckwebview/blob/main/MacroDeckWebView-example.png?raw=true "Screenshot 1")
 
 # Revisions
+v1.3 - Tweaks
+
+    - Added setting to disable border box in Macro Deck's web client via CSS injection
+    
 v1.2 - Updated for Macro Deck 2.13
 
     - Uses the new built-in web server of Macro Deck, as web.macrodeck.org will be deprecated.
